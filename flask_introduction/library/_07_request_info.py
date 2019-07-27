@@ -16,8 +16,7 @@ app = Flask(__name__)
 
 @app.route('/request-info')
 def request_info():
-    # Get location info using https://freegeoip.net/
-    geoip_url = 'http://freegeoip.net/json/{}'.format(request.remote_addr)
-    client_location = requests.get(geoip_url).json()
+    ip_url = 'http://ip-api.com/json/{}'.format(request.remote_addr)
+    client_location = requests.get(ip_url).json()
     return render_template('request/info.html',
                            client_location=client_location)
